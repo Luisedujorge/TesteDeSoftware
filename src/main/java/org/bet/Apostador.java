@@ -8,6 +8,12 @@ public class Apostador{
     private double saldo;
     private List<Aposta> apostas;
 
+    public Apostador(String nome){
+        this.nome = nome;
+        this.saldo = 0;
+        this.apostas = new ArrayList<>();
+    }
+
     public Apostador(String nome, double saldo){
         this.nome = nome;
         this.saldo = saldo;

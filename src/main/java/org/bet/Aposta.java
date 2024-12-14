@@ -37,9 +37,7 @@ public class Aposta {
         this.premioTransferido = false;
     }
 
-    /**
-     * @param incremento
-     */
+
     public void aumentarProbabilidade(int incremento) {
         this.probabilidade += incremento;
         if(probabilidade > 100){
