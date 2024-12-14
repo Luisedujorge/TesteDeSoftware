@@ -45,7 +45,7 @@ public class Apostador{
         return true;
     }
 
-    public boolean removerSaldo(double valor) { //t
+    public boolean removerSaldo(double valor) {
         if(valor <= 0){
             System.out.println("Valor inválido! Insira um valor maior do que 0.");
             return false;

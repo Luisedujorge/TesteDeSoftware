@@ -59,7 +59,7 @@ public class ApostadorTest {
     }
 
     @Test
-    public void testRemoverSaldoPositivo(){ //teste
+    public void testRemoverSaldoPositivo(){
         apostador.removerSaldo(100);
         assertEquals(900, apostador.getSaldo(), 0.001);
     }
