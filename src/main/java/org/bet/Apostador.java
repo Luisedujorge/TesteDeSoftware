@@ -36,8 +36,22 @@ public class Apostador{
         return this.nome;
     }
 
-    public void adicionarSaldo(double valor) {
+    public boolean adicionarSaldo(double valor) {
+        if(valor <= 0){
+            System.out.println("Valor inválido! Insira um valor maior do que 0.");
+            return false;
+        }
         this.saldo += valor;
+        return true;
+    }
+
+    public boolean removerSaldo(double valor) {
+        if(valor <= 0){
+            System.out.println("Valor inválido! Insira um valor maior do que 0.");
+            return false;
+        }
+        this.saldo -= valor;
+        return true;
     }
 
     public double getSaldo() {

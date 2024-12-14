@@ -52,7 +52,7 @@ public class SistemaDeApostas{
         Aposta aposta = new Aposta(time, jogo, apostador, probabilidade, valor, premio);
 
         if(apostador.adicionarAposta(aposta)) {
-            apostador.adicionarSaldo(-valor);
+            apostador.removerSaldo(valor);
             jogo.adicionarAposta(aposta);
             System.out.println("Aposta criada!");
         } else{
