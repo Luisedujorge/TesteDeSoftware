@@ -41,9 +41,39 @@ public class ApostadorTest {
     }
 
     @Test
-    public void testAdicionarSaldo(){
+    public void testAdicionarSaldoPositivo(){
         apostador.adicionarSaldo(100);
         assertEquals(1100, apostador.getSaldo(), 0.001);
+    }
+
+    @Test
+    public void testAdicionarSaldoNegativo(){
+        apostador.adicionarSaldo(-100);
+        assertEquals(1000, apostador.getSaldo(), 0.001);
+    }
+
+    @Test
+    public void testAdicionarSaldoZero(){
+        apostador.adicionarSaldo(0);
+        assertEquals(1000, apostador.getSaldo(), 0.001);
+    }
+
+    @Test
+    public void testRemoverSaldoPositivo(){
+        apostador.removerSaldo(100);
+        assertEquals(900, apostador.getSaldo(), 0.001);
+    }
+
+    @Test
+    public void testRemoverSaldoNegativo(){
+        apostador.removerSaldo(-100);
+        assertEquals(1000, apostador.getSaldo(), 0.001);
+    }
+
+    @Test
+    public void testRemoverSaldoZero(){
+        apostador.removerSaldo(0);
+        assertEquals(1000, apostador.getSaldo(), 0.001);
     }
 
     @Test
