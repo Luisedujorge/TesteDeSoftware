@@ -92,7 +92,7 @@ public class SistemaDeApostas{
     public void processarResultado(Partida partida, String timeVencedor){
         for(Aposta aposta : partida.getApostas()) {
             if(aposta.getTime() == timeVencedor) {
-                aposta.getApostador().adicionarSaldo(aposta.getPremio());
+                aposta.getApostador().depositar(aposta.getPremio());
                 System.out.println("R$" + aposta.getPremio() + " foram transferidos para o/a " + aposta.getApostador() + "!");
             }
         }
@@ -103,7 +103,7 @@ public class SistemaDeApostas{
             apostador.removerAposta(aposta);
             aposta.getPartida().getApostas().remove(aposta);
 
-            apostador.adicionarSaldo(aposta.getValor());
+            apostador.depositar(aposta.getValor());
         }
     }
 }

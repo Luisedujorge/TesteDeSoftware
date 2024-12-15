@@ -4,18 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Apostador{
+    private static int counter = 0;
+    private int id;
     protected String nome;
     private double saldo;
     private List<Aposta> apostas;
 
 
     public Apostador(String nome){
+        this.id = ++counter;
         this.nome = nome;
         this.saldo = 0;
         this.apostas = new ArrayList<>();
     }
 
     public Apostador(String nome, double saldo){
+        this.id = ++counter;
         this.nome = nome;
         this.saldo = saldo;
         this.apostas = new ArrayList<>();
@@ -25,8 +29,7 @@ public class Apostador{
         if(this.apostas.contains(aposta)){
            throw new IllegalStateException("Aposta já cadastrada");
         }
-        apostas.add(aposta);
-        this.removerSaldo(aposta.getValor());
+        this.apostas.add(aposta);
     }
 
     public void removerAposta(Aposta aposta) throws IllegalStateException {
@@ -44,16 +47,16 @@ public class Apostador{
         return this.nome;
     }
 
-    public void adicionarSaldo(double valor) throws IllegalArgumentException {
+    public void depositar(double valor) throws IllegalArgumentException {
         if(valor <= 0){
-            throw new IllegalArgumentException("Valor deve ser maior que 0!");
+            throw new IllegalArgumentException("Valor a depositar deve ser maior que 0.");
         }
         this.saldo += valor;
     }
 
-    public void removerSaldo(double valor) throws IllegalArgumentException {
+    public void sacar(double valor) throws IllegalArgumentException {
         if(valor <= 0){
-            throw new IllegalArgumentException("Valor deve ser maior que 0!");
+            throw new IllegalArgumentException("Valor a sacar deve ser maior que 0.");
         }
         this.saldo -= valor;
     }

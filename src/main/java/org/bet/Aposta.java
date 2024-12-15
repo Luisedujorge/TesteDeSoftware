@@ -18,6 +18,7 @@ public class Aposta {
 
     protected int probabilidade = 0;
 
+    public Aposta(){}
 
     public Aposta(String time, Partida partida, Apostador apostador, int probabilidade, double valor, double premio){
         this.time = time;

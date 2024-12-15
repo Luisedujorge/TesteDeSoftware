@@ -1,89 +1,77 @@
 import org.bet.Aposta;
 import org.bet.Apostador;
-import org.bet.Partida;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+
 import org.junit.Before;
 import org.junit.Test;
 
 public class ApostadorTest {
     private Apostador apostador;
-    private Aposta aposta;
-    private Partida evento;
+    private Aposta apostaMock;
 
     @Before
     public void setUp(){
-        // evento = new Partida("Sao Paulo", "Bahia", "futebol", "22/11");
-        // aposta = new Aposta("Sao Paulo", evento, apostador, 70, 300, 500);
+        apostaMock = mock(Aposta.class);
         apostador = new Apostador("Luis", 1000);
     }
 
-//    @Test
-//    public void testNovaAposta(){
-//        boolean test = apostador.adicionarAposta(aposta);
-//        assertTrue(test);
-//    }
-
-//    @Test
-//    public void testLimiteDeApostas(){
-//        apostador.adicionarAposta(aposta);
-//        apostador.adicionarAposta(aposta);
-//        apostador.adicionarAposta(aposta);
-//        apostador.adicionarAposta(aposta);
-//        apostador.adicionarAposta(aposta);
-//        apostador.adicionarAposta(aposta);
-//        apostador.adicionarAposta(aposta);
-//        apostador.adicionarAposta(aposta);
-//        apostador.adicionarAposta(aposta);
-//        apostador.adicionarAposta(aposta);
-//        boolean test = apostador.adicionarAposta(aposta);
-//        assertFalse(test);
-//    }
-
+    @Test
+    public void testNovaAposta(){
+        apostador.adicionarAposta(apostaMock);
+        int qtdApostas = apostador.getApostas().size();
+        int expected = 1;
+        assertEquals(qtdApostas, expected);
+    }
 
     @Test
-    public void testAdicionarSaldoPositivo(){
-        apostador.adicionarSaldo(100);
+    public void testDepositarPositivo(){
+        apostador.depositar(100);
         int expected = 1100;
         assertEquals(expected, apostador.getSaldo(), 0.001);
-        apostador.removerSaldo(100);
+        apostador.sacar(100);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testAdicionarSaldoNegativo(){
-        apostador.adicionarSaldo(-100);
+    public void testDepositarNegativo(){
+        apostador.depositar(-100);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testAdicionarSaldoZero(){
-        apostador.adicionarSaldo(0);
+    public void testDepositarZero(){
+        apostador.depositar(0);
     }
 
     @Test
-    public void testRemoverSaldoPositivo(){
-        apostador.removerSaldo(100);
+    public void testSacarPositivo(){
+        apostador.sacar(100);
         int expected = 900;
         assertEquals(expected, apostador.getSaldo(), 0.001);
-        apostador.adicionarSaldo(100);
+        apostador.depositar(100);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testRemoverSaldoNegativo(){
-        apostador.removerSaldo(-100);
+    public void testSacarNegativo(){
+        apostador.sacar(-100);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testRemoverSaldoZero(){
-        apostador.removerSaldo(0);
+    public void testSacarZero(){
+        apostador.sacar(0);
     }
 
     @Test
     public void testSaldoSuficiente(){
-        assertTrue(apostador.saldoSuficiente(1000));
+        boolean resultado = apostador.saldoSuficiente(1000);
+        assertTrue(resultado);
     }
 
     @Test
     public void testSaldoInsuficiente(){
-        assertFalse(apostador.saldoSuficiente(1001));
+        boolean resultado = apostador.saldoSuficiente(1001);
+        assertFalse(resultado);
     }
 }
