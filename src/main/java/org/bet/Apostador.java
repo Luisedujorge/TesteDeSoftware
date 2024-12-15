@@ -93,4 +93,8 @@ public class Apostador{
     public boolean podeApostar(){
         return this.saldoPositivo && this.getIdade() >= 18;
     }//
+
+    public void mudarDataNascimento(LocalDate novaDataNascimento){
+        this.dataNascimento = novaDataNascimento;
+    }
 }

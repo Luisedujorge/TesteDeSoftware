@@ -76,4 +76,10 @@ public class ApostadorTest {
         boolean resultado = apostador.saldoSuficiente(1001);
         assertFalse(resultado);
     }
+
+    @Test
+    public void testMudarDataNascimento(){
+        apostador.mudarDataNascimento(LocalDate.of(2003, 01, 21));
+        assertEquals(LocalDate.of(2003, 01, 21), apostador.getDataNascimento());
+    }
 }
