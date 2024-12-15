@@ -69,4 +69,5 @@ public class ApostaTest {
         aposta = new Aposta("Sao Paulo", partida, apostador, 60, 300, 500);
         aposta.aumentarProbabilidade(0);
     }
+
 }
