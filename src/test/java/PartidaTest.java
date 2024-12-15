@@ -29,5 +29,5 @@ public class PartidaTest {
         evento.adicionarAposta(aposta);
         int tamanho = evento.getApostas().size();
         assertEquals(1, tamanho);
-    }*/
+    }*///
 }

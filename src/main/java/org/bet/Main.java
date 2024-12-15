@@ -27,6 +27,6 @@ public class Main{
         sistema.registrarAposta(eduardo, "Cruzeiro", partida1, 70);
 
         sistema.gerarRelatorioPorApostador();
-        sistema.gerarRelatorioPorPartida();
+        sistema.gerarRelatorioPorPartida();//
     }
 }

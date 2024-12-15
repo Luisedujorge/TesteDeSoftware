@@ -69,7 +69,7 @@ public class ApostaTest {
     public void testAumentaProbabilidadeZero(){
         aposta = new Aposta("Sao Paulo", evento, apostador, 60, 300, 500);
         aposta.aumentarProbabilidade(0);
-    }
+    }//
 
 
 }
