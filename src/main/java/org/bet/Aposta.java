@@ -52,9 +52,7 @@ public class Aposta {
         }
     }
 
-    /**
-     * @return
-     */
+
     public int getProbabilidade() {
         return this.probabilidade;
     }
