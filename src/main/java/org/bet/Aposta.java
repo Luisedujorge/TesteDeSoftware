@@ -38,14 +38,20 @@ public class Aposta {
     }
 
 
-    public void aumentarProbabilidade(int incremento) {
+    public void aumentarProbabilidade(int incremento) throws IllegalArgumentException {
+        if(incremento <= 0){
+            throw new IllegalArgumentException("Valor deve ser maior que 0!");
+        }
         this.probabilidade += incremento;
         if(probabilidade > 100){
             probabilidade = 100;
         }
     }
 
-    public void diminuirProbabilidade(int decremento) {
+    public void diminuirProbabilidade(int decremento) throws IllegalArgumentException {
+        if(decremento <= 0){
+            throw new IllegalArgumentException("Valor deve ser maior que 0!");
+        }
         this.probabilidade -= decremento;
         if(probabilidade < 0){
             probabilidade = 0;
