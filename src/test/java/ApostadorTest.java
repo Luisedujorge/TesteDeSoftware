@@ -25,7 +25,7 @@ public class ApostadorTest {
     public void testNovaAposta(){
         apostador.adicionarAposta(apostaMock);
         int qtdApostas = apostador.getApostas().size();
-        int expected = 12;
+        int expected = 1;
         assertEquals(qtdApostas, expected);
     }
 
