@@ -17,18 +17,13 @@ public class SistemaDeApostas{
         apostadores.add(apostador);
     }
 
-    public void adicionarEvento(Partida partida){
-        partidas.add(partida);
+    public Partida buscarPartida(String nome) {
+        return partidas.stream()
+                .filter(partida -> partida.getIdentificador().equalsIgnoreCase(nome))
+                .findFirst()
+                .orElse(null);
     }
 
-    public Partida buscarPartida(String nome) {
-        for(Partida partida: partidas){
-            if(partida.getIdentificador().equalsIgnoreCase(nome)){
-                return partida;
-            }
-        }
-        return null;
-    }
 
     public double calcularPremio(int probabilidade, double valor){
         return (101 - (double)probabilidade) * valor / 100 ;
@@ -39,7 +34,6 @@ public class SistemaDeApostas{
     }
 
     public void registrarAposta(Apostador apostador, String time, Partida partida, double valor){
-        //Verificar se o apostador tem saldo suficiente
         if(!apostador.saldoSuficiente(valor)) {
             System.out.println("O apostador não possui saldo suficiente para realizar a aposta!");
             return;
@@ -54,30 +48,8 @@ public class SistemaDeApostas{
         if(apostador.saldoSuficiente(valor)) {
             apostador.adicionarAposta(aposta);
             jogo.adicionarAposta(aposta);
-            System.out.println("Aposta criada!");
         } else{
-            System.out.println("Não foi possivel registrar a aposta! Limite de apostas atingido!");
-        }
-    }
-
-    public void gerarRelatorioPorApostador(){
-        System.out.println("Relatório de apostas por apostador" + "\n\n");
-        for(Apostador apostador: apostadores){
-            List<Aposta> apostas = apostador.getApostas();
-            System.out.println("Apostador : " + apostador + "\n");
-            for(Aposta aposta: apostas){
-                System.out.println(aposta);
-            }
-        }
-    }
-
-    public void gerarRelatorioPorPartida(){
-        System.out.println("Relatório de apostas por partida" + "\n\n");
-        for(Partida partida: partidas){
-            List<Aposta> p = partida.getApostas();
-            for(Aposta aposta: p){
-                System.out.println(aposta);
-            }
+            System.out.println("Não foi possivel registrar a aposta! Saldo insuficiente!");
         }
     }
 
@@ -88,24 +60,4 @@ public class SistemaDeApostas{
     public int getQuantidadeEventos(){
         return partidas.size();
     }
-
-    public void processarResultado(Partida partida, String timeVencedor){
-        for(Aposta aposta : partida.getApostas()) {
-            if(aposta.getTime() == timeVencedor) {
-                aposta.getApostador().depositar(aposta.getPremio());
-                System.out.println("R$" + aposta.getPremio() + " foram transferidos para o/a " + aposta.getApostador() + "!");
-            }
-        }
-    }
-
-    public void cancelarAposta(Apostador apostador, Aposta aposta){
-        if(apostador.getApostas().contains(aposta)) {
-            apostador.removerAposta(aposta);
-            aposta.getPartida().getApostas().remove(aposta);
-
-            apostador.depositar(aposta.getValor());
-        }
-    }
 }
-
-//.

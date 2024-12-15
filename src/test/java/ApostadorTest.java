@@ -1,7 +1,5 @@
 import org.bet.Aposta;
 import org.bet.Apostador;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
