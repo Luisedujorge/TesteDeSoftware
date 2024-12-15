@@ -1,6 +1,9 @@
 # This config was automatically generated from your source code
 # Stacks detected: cicd:github-actions:.github/workflows,deps:java:.
 version: 2.1
+orbs:
+  codecov: codecov/codecov@5
+  
 jobs:
   test-java:
     docker:
@@ -38,6 +41,10 @@ workflows:
   build-and-test:
     jobs:
       - test-java
+  upload-to-codecov:
+    jobs:
+      - checkout 
+      - codecov/upload
     # - deploy:
     #     requires:
     #       - test-java
