@@ -9,6 +9,8 @@ import static org.mockito.Mockito.mock;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
+
 public class ApostadorTest {
     private Apostador apostador;
     private Aposta apostaMock;
@@ -16,7 +18,7 @@ public class ApostadorTest {
     @Before
     public void setUp(){
         apostaMock = mock(Aposta.class);
-        apostador = new Apostador("Luis", 1000);
+        apostador = new Apostador("Luis", LocalDate.of(2002, 01, 21),1000);
     }
 
     @Test

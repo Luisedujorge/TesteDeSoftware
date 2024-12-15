@@ -49,10 +49,10 @@ public class SistemaDeApostasTest {
     @Before
     public void setUp2(){
         sistema = new SistemaDeApostas();
-        apostador = new Apostador("Luis", 1000);
-        evento = new Partida("Sao Paulo", "Cruzeiro", "futebol", "22/11");
-        sistema.registrarApostador(apostador);
-        sistema.registrarPartida(evento);
+//        apostador = new Apostador("Luis", 1000);
+//        evento = new Partida("Sao Paulo", "Cruzeiro", "futebol", "22/11");
+//        sistema.registrarApostador(apostador);
+//        sistema.registrarPartida(evento);
     }
 
 //    @Test

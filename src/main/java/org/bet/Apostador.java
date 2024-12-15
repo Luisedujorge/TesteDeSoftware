@@ -33,7 +33,6 @@ public class Apostador{
            throw new IllegalStateException("Aposta já cadastrada");
         }
         apostas.add(aposta);
-        this.removerSaldo(aposta.getValor());
     }
 
     public void removerAposta(Aposta aposta) throws IllegalStateException {
@@ -55,7 +54,7 @@ public class Apostador{
         return this.nome;
     }
 
-    public void adicionarSaldo(double valor) throws IllegalArgumentException {
+    public void depositar(double valor) throws IllegalArgumentException {
         if(valor <= 0){
             throw new IllegalArgumentException("Valor deve ser maior que 0!");
         }
@@ -65,7 +64,7 @@ public class Apostador{
         }
     }
 
-    public void removerSaldo(double valor) throws IllegalArgumentException {
+    public void sacar(double valor) throws IllegalArgumentException {
         if(valor <= 0){
             throw new IllegalArgumentException("Valor deve ser maior que 0!");
         }
