@@ -22,7 +22,7 @@ public class Partida {
         return apostas;
     }
 
-    public String getIndetificador(){
+    public String getIdentificador(){
         return timeA + " X " + timeB;
     }
 

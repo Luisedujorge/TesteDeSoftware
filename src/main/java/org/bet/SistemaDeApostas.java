@@ -23,7 +23,7 @@ public class SistemaDeApostas{
 
     public Partida buscarPartida(String nome) {
         for(Partida partida: partidas){
-            if(partida.getIndetificador().equalsIgnoreCase(nome)){
+            if(partida.getIdentificador().equalsIgnoreCase(nome)){
                 return partida;
             }
         }
@@ -45,14 +45,14 @@ public class SistemaDeApostas{
             return;
         }
 
-        Partida jogo = buscarPartida(partida.getIndetificador());
+        Partida jogo = buscarPartida(partida.getIdentificador());
         Random r = new Random();
         int probabilidade = r.nextInt(101);
         double premio = calcularPremio(probabilidade, valor);
         Aposta aposta = new Aposta(time, jogo, apostador, probabilidade, valor, premio);
 
-        if(apostador.adicionarAposta(aposta)) {
-            apostador.removerSaldo(valor);
+        if(apostador.podeApostar()) {
+            apostador.adicionarAposta(aposta);
             jogo.adicionarAposta(aposta);
             System.out.println("Aposta criada!");
         } else{
