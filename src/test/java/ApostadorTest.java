@@ -29,6 +29,24 @@ public class ApostadorTest {
         assertEquals(qtdApostas, expected);
     }
 
+    @Test(expected = IllegalStateException.class)
+    public void testAdicionarMesmaAposta2x(){
+        apostador.adicionarAposta(apostaMock);
+        apostador.adicionarAposta(apostaMock);
+    }
+
+    @Test
+    public void testRemoverAposta() {
+        apostador.adicionarAposta(apostaMock);
+        apostador.removerAposta(apostaMock);
+        assertEquals(0, apostador.getApostas().size());
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testRemoverApostaInexistente() {
+        apostador.removerAposta(apostaMock);
+    }
+
     @Test
     public void testDepositarPositivo(){
         apostador.depositar(100);
@@ -65,6 +83,11 @@ public class ApostadorTest {
         apostador.sacar(0);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testSacarValorMaiorQueSaldo(){
+        apostador.sacar(1001);
+    }
+
     @Test
     public void testSaldoSuficiente(){
         boolean resultado = apostador.saldoSuficiente(1000);
@@ -81,5 +104,16 @@ public class ApostadorTest {
     public void testMudarDataNascimento(){
         apostador.mudarDataNascimento(LocalDate.of(2003, 01, 21));
         assertEquals(LocalDate.of(2003, 01, 21), apostador.getDataNascimento());
+    }
+
+    @Test
+    public void testMaiorIdade(){
+        assertTrue(apostador.MaiorIdade());
+    }
+
+    @Test
+    public void testMenorIdade(){
+        Apostador apostador2 = new Apostador("Eduardo", LocalDate.of(2010, 01, 21));
+        assertFalse(apostador2.MaiorIdade());
     }
 }

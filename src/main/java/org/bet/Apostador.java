@@ -9,14 +9,12 @@ public class Apostador{
     protected String nome;
     private LocalDate dataNascimento;
     private double saldo;
-    private boolean saldoPositivo;
     private List<Aposta> apostas;
 
     public Apostador(String nome, LocalDate dataNascimento){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.saldo = 0;
-        this.saldoPositivo = false;
         this.apostas = new ArrayList<>();
     }
 
@@ -24,7 +22,6 @@ public class Apostador{
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.saldo = saldo;
-        this.saldoPositivo = true;
         this.apostas = new ArrayList<>();
     }
 
@@ -59,19 +56,16 @@ public class Apostador{
             throw new IllegalArgumentException("Valor deve ser maior que 0!");
         }
         this.saldo += valor;
-        if(this.saldo > 0){
-            saldoPositivo = true;
-        }
     }
 
     public void sacar(double valor) throws IllegalArgumentException {
         if(valor <= 0){
             throw new IllegalArgumentException("Valor deve ser maior que 0!");
         }
-        this.saldo -= valor;
-        if(this.saldo <= 0){
-            this.saldoPositivo = false;
+        if (valor > this.saldo) {
+            throw new IllegalArgumentException("Valor deve ser maior do que o saldo da conta!");
         }
+        this.saldo -= valor;
     }
 
     public double getSaldo() {
@@ -90,11 +84,7 @@ public class Apostador{
         return this.getIdade() >= 18;
     }
 
-    public boolean podeApostar(){
-        return this.saldoPositivo && this.getIdade() >= 18;
-    }//
-
-    public void mudarDataNascimento(LocalDate novaDataNascimento){
+    public void mudarDataNascimento(LocalDate novaDataNascimento) {
         this.dataNascimento = novaDataNascimento;
     }
 }
