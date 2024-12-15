@@ -1,3 +1,4 @@
+import org.bet.Aposta;
 import org.bet.Partida;
 import org.bet.Time;
 import org.junit.Before;
@@ -7,12 +8,15 @@ import static org.mockito.Mockito.mock;
 
 public class PartidaTest {
     private Partida partida;
-    private Time time;
+    private Time timeA;
+    private Time timeB;
+    private Aposta aposta;
 
     @Before
     public void setUp(){
-        Time timeA = mock(Time.class);
-        Time timeB = mock(Time.class);
+        timeA = mock(Time.class);
+        timeB = mock(Time.class);
+        aposta = mock(Aposta.class);
         partida = new Partida(timeA, timeB, "futebol", "22/11");
     }
 
@@ -23,13 +27,12 @@ public class PartidaTest {
         assertEquals(expected, qtdApostas);
     }
 
-    /*
+
     @Test
     public void testAdicionarAposta(){
-        Apostador apostador = new Apostador("Luis", LocalDate.of(2000, 12, 15), 1000);
-        Aposta aposta = new Aposta("Sao Paulo", evento, apostador, 70, 300, 500);
-        evento.adicionarAposta(aposta);
-        int tamanho = evento.getApostas().size();
-        assertEquals(1, tamanho);
-    }*///
+        partida.adicionarAposta(aposta);
+        int tamanho = partida.getApostas().size();
+        int expected = 1;
+        assertEquals(expected, tamanho);
+    }
 }
