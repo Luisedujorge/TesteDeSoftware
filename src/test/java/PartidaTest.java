@@ -1,27 +1,29 @@
-
-import static org.junit.Assert.*;
-
-import org.bet.Aposta;
-import org.bet.Apostador;
 import org.bet.Partida;
+import org.bet.Time;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class PartidaTest {
-    private Partida evento;
-    private Aposta aposta;
+    private Partida partida;
+    private Time time;
 
     @Before
     public void setUp(){
-        evento = new Partida("Sao Paulo", "Cruzeiro", "futebol", "22/11");
+        Time timeA = mock(Time.class);
+        Time timeB = mock(Time.class);
+        partida = new Partida(timeA, timeB, "futebol", "22/11");
     }
 
-    /*@Test
+    @Test
     public void testNenhumaAposta(){
-        int tamanho = evento.getApostas().size();
-        assertEquals(0, tamanho);
+        int qtdApostas = partida.getApostas().size();
+        int expected = 0;
+        assertEquals(expected, qtdApostas);
     }
 
+    /*
     @Test
     public void testAdicionarAposta(){
         Apostador apostador = new Apostador("Luis", LocalDate.of(2000, 12, 15), 1000);

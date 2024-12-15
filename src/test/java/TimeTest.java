@@ -38,4 +38,11 @@ public class TimeTest {
         assertEquals(expected, time.getQualidade());
     }
 
+    @Test
+    public void testOverride(){
+        Time time = new Time("São Paulo", 10);
+        String nome = time.toString();
+        String expected = "São Paulo";
+        assertEquals(expected, nome);
+    }
 }

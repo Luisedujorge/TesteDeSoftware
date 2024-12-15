@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Partida {
-    private String timeA;
-    private String timeB;
+    private Time timeA;
+    private Time timeB;
     private String esporte;
     private String data;
     private List<Aposta> apostas;
 
-    public Partida(String timeA, String timeB, String esporte, String data){
+    public Partida(Time timeA, Time timeB, String esporte, String data){
         this.timeA = timeA;
         this.timeB = timeB;
         this.esporte = esporte;

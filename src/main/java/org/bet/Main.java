@@ -16,8 +16,14 @@ public class Main{
         sistema.registrarApostador(luis);
         sistema.registrarApostador(eduardo);
 
-        Partida partida1 = new Partida("Sao Paulo", "Cruzeiro", "futebol", "21/11/24");
-        Partida partida2 = new Partida("Fortaleza", "Bahia", "futebol", "22/11/24");
+        Time a = new Time("Sao Paulo", 10);
+        Time b = new Time("Cruzeiro", 10);
+        Time c = new Time("Fortaleza", 10);
+        Time d = new Time("Bahia", 10);
+
+
+        Partida partida1 = new Partida(a, b, "futebol", "21/11/24");
+        Partida partida2 = new Partida(c, d, "futebol", "22/11/24");
         sistema.registrarPartida(partida1);
         sistema.registrarPartida(partida2);
 
