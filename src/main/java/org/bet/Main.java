@@ -5,12 +5,14 @@
  */
 package org.bet;
 
+import java.time.LocalDate;
+
 public class Main{
     public static void main(String[] args){
         SistemaDeApostas sistema = new SistemaDeApostas();
 
-        Apostador luis = new Apostador("Luis", 100);
-        Apostador eduardo = new Apostador("Eduardo", 200);
+        Apostador luis = new Apostador("Luis", LocalDate.of(2000, 12, 15), 1000);
+        Apostador eduardo = new Apostador("Eduardo", LocalDate.of(2000, 12, 15), 1000);
         sistema.registrarApostador(luis);
         sistema.registrarApostador(eduardo);
 
@@ -25,6 +27,6 @@ public class Main{
         sistema.registrarAposta(eduardo, "Cruzeiro", partida1, 70);
 
         sistema.gerarRelatorioPorApostador();
-        sistema.gerarRelatorioPorPartida();
+        sistema.gerarRelatorioPorPartida();//
     }
 }
