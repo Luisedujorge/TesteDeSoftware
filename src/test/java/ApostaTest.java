@@ -6,6 +6,8 @@ import org.bet.Partida;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
+
 public class ApostaTest {
     private Aposta aposta;
     Partida evento;
@@ -14,7 +16,7 @@ public class ApostaTest {
     @Before
     public void setUp(){
         evento = new Partida("Sao Paulo", "Bahia", "futebol", "22/11");
-        apostador = new Apostador("Luis", 1000);
+        apostador = new Apostador("Luis", LocalDate.of(2000, 12, 15), 1000);
     }
 
     @Test
@@ -68,4 +70,6 @@ public class ApostaTest {
         aposta = new Aposta("Sao Paulo", evento, apostador, 60, 300, 500);
         aposta.aumentarProbabilidade(0);
     }
+
+
 }

@@ -12,24 +12,30 @@ public class SistemaDeApostasTest {
     private Apostador apostador;
     private Partida evento;
 
-    /*@Before
+    @Before
     public void setUp(){
         sistema = new SistemaDeApostas();
     }
 
-    @Test
+    @Test //unidade
     public void testNenhumApostador(){
         int test = sistema.getQuantidadeApostadores();
         assertEquals(0, test);
     }
 
-    @Test
+    @Test //unidade
     public void testNenhumEvento(){
         int test = sistema.getQuantidadeEventos();
         assertEquals(0, test);
     }
 
-    @Test
+    @Test //unidade
+    public void testCalularPremio(){
+        double valorPremio = sistema.calcularPremio(50, 100);
+        assertEquals(51, valorPremio, 0.001);
+    }
+
+    /*@Test //integração
     public void testNovoApostador(){
         apostador = new Apostador("Luis", 1000);
         sistema.registrarApostador(apostador);
@@ -37,7 +43,7 @@ public class SistemaDeApostasTest {
         assertEquals(1, test);
     }
 
-    @Test
+    @Test //integração
     public void testNovoEvento(){
         Partida evento = new Partida("Sao Paulo", "Cruzeiro", "futebol", "22/11");
         sistema.registrarPartida(evento);
@@ -46,7 +52,7 @@ public class SistemaDeApostasTest {
     }*/
 
 
-    @Before
+    /*@Before
     public void setUp2(){
         sistema = new SistemaDeApostas();
         apostador = new Apostador("Luis", 1000);
@@ -113,11 +119,5 @@ public class SistemaDeApostasTest {
                 assertEquals(saldoInicialIgor, segundoApostador.getSaldo(), 0.001);
             }
         }
-    }
-
-    @Test
-    public void testCalularPremio(){
-        double valorPremio = sistema.calcularPremio(50, 100);
-        assertEquals(51, valorPremio, 0.001);
-    }
+    }*/
 }

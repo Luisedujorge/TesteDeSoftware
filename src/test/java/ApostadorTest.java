@@ -2,6 +2,8 @@ import org.bet.Aposta;
 import org.bet.Apostador;
 import org.bet.Partida;
 
+import java.time.LocalDate;
+
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,10 +17,10 @@ public class ApostadorTest {
     public void setUp(){
         // evento = new Partida("Sao Paulo", "Bahia", "futebol", "22/11");
         // aposta = new Aposta("Sao Paulo", evento, apostador, 70, 300, 500);
-        apostador = new Apostador("Luis", 1000);
+        apostador = new Apostador("Luis", LocalDate.of(2000, 12, 15), 1000);
     }
 
-//    @Test
+//    @Test //integração
 //    public void testNovaAposta(){
 //        boolean test = apostador.adicionarAposta(aposta);
 //        assertTrue(test);
@@ -86,7 +88,15 @@ public class ApostadorTest {
     }
 
     @Test
-    public void testSaldoDevedor(){
-
+    public void testMaiorIdade(){
+        assertTrue(apostador.MaiorIdade());
     }
+
+    @Test
+    public void testMenorIdade(){
+        Apostador apostador2 = new Apostador("Eduardo", LocalDate.of(2007, 12, 15));
+        assertFalse(apostador2.MaiorIdade());
+    }
+
+
 }

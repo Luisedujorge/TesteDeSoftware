@@ -2,23 +2,27 @@ package org.bet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Apostador{
     protected String nome;
+    private LocalDate dataNascimento;
     private double saldo;
     private boolean saldoPositivo;
     private List<Aposta> apostas;
 
-
-    public Apostador(String nome){
+    public Apostador(String nome, LocalDate dataNascimento){
         this.nome = nome;
+        this.dataNascimento = dataNascimento;
         this.saldo = 0;
         this.saldoPositivo = false;
         this.apostas = new ArrayList<>();
     }
 
-    public Apostador(String nome, double saldo){
+    public Apostador(String nome, LocalDate dataNascimento, double saldo){
         this.nome = nome;
+        this.dataNascimento = dataNascimento;
         this.saldo = saldo;
         this.saldoPositivo = true;
         this.apostas = new ArrayList<>();
@@ -37,6 +41,10 @@ public class Apostador{
             throw new IllegalStateException("Aposta inexistente");
         }
         this.apostas.remove(aposta);
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
     public List<Aposta> getApostas(){
@@ -71,11 +79,19 @@ public class Apostador{
         return this.saldo;
     }
 
+    public int getIdade() {
+        return Period.between(dataNascimento, LocalDate.now()).getYears();
+    }
+
     public boolean saldoSuficiente(double valorAposta){
         return this.saldo >= valorAposta;
     }
 
+    public boolean MaiorIdade() {
+        return this.getIdade() >= 18;
+    }
+
     public boolean podeApostar(){
-        return this.saldoPositivo;
+        return this.saldoPositivo && this.getIdade() >= 18;
     }
 }
