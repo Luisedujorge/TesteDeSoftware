@@ -13,20 +13,12 @@ public class Aposta {
     private double valor;
     private double premio;
     private boolean premioTransferido;
-    /**
-     *
-     */
     protected int status = ABERTA;
 
-    /**
-     * A probabilidade varia de 0 a 100
-     */
+
     protected int probabilidade = 0;
 
 
-    /**
-     *
-     */
     public Aposta(String time, Partida partida, Apostador apostador, int probabilidade, double valor, double premio){
         this.time = time;
         this.partida = partida;

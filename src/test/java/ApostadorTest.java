@@ -44,7 +44,8 @@ public class ApostadorTest {
     @Test
     public void testAdicionarSaldoPositivo(){
         apostador.adicionarSaldo(100);
-        assertEquals(1100, apostador.getSaldo(), 0.001);
+        int expected = 1100;
+        assertEquals(expected, apostador.getSaldo(), 0.001);
         apostador.removerSaldo(100);
     }
 
@@ -61,7 +62,8 @@ public class ApostadorTest {
     @Test
     public void testRemoverSaldoPositivo(){
         apostador.removerSaldo(100);
-        assertEquals(900, apostador.getSaldo(), 0.001);
+        int expected = 900;
+        assertEquals(expected, apostador.getSaldo(), 0.001);
         apostador.adicionarSaldo(100);
     }
 
@@ -83,10 +85,5 @@ public class ApostadorTest {
     @Test
     public void testSaldoInsuficiente(){
         assertFalse(apostador.saldoSuficiente(1001));
-    }
-
-    @Test
-    public void testSaldoDevedor(){
-
     }
 }

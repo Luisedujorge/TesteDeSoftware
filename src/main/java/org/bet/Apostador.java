@@ -6,21 +6,18 @@ import java.util.List;
 public class Apostador{
     protected String nome;
     private double saldo;
-    private boolean saldoPositivo;
     private List<Aposta> apostas;
 
 
     public Apostador(String nome){
         this.nome = nome;
         this.saldo = 0;
-        this.saldoPositivo = false;
         this.apostas = new ArrayList<>();
     }
 
     public Apostador(String nome, double saldo){
         this.nome = nome;
         this.saldo = saldo;
-        this.saldoPositivo = true;
         this.apostas = new ArrayList<>();
     }
 
@@ -52,9 +49,6 @@ public class Apostador{
             throw new IllegalArgumentException("Valor deve ser maior que 0!");
         }
         this.saldo += valor;
-        if(this.saldo > 0){
-            saldoPositivo = true;
-        }
     }
 
     public void removerSaldo(double valor) throws IllegalArgumentException {
@@ -62,9 +56,6 @@ public class Apostador{
             throw new IllegalArgumentException("Valor deve ser maior que 0!");
         }
         this.saldo -= valor;
-        if(this.saldo <= 0){
-            this.saldoPositivo = false;
-        }
     }
 
     public double getSaldo() {
@@ -73,9 +64,5 @@ public class Apostador{
 
     public boolean saldoSuficiente(double valorAposta){
         return this.saldo >= valorAposta;
-    }
-
-    public boolean podeApostar(){
-        return this.saldoPositivo;
     }
 }

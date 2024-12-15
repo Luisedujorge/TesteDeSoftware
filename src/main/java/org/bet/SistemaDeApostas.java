@@ -51,7 +51,7 @@ public class SistemaDeApostas{
         double premio = calcularPremio(probabilidade, valor);
         Aposta aposta = new Aposta(time, jogo, apostador, probabilidade, valor, premio);
 
-        if(apostador.podeApostar()) {
+        if(apostador.saldoSuficiente(valor)) {
             apostador.adicionarAposta(aposta);
             jogo.adicionarAposta(aposta);
             System.out.println("Aposta criada!");
