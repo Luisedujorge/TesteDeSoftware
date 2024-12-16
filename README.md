@@ -14,4 +14,4 @@ Este é um sistema de apostas esportivas. É um sistema simples, apenas para col
 O sistema foi implementado em Java, utilizando Maven para gerenciamento do projeto. 
 Os testes são realizados utilizando a ferramenta JUnit 4.
 Embora não tenhamos utilizado ferramentas externas como bancos de dados ou APIs, utilizamos o Mockito para criar testes de unidade onde havia algumas dependências entre classes. 
-Além disso, utilizamos o JaCoCo para mensurar a cobertura dos testes e gerar relatórios. Também usamos GitHub Actions para automatizar os testes e mensurar a cobertura a cada push.
+Além disso, utilizamos o JaCoCo para mensurar a cobertura dos testes e gerar relatórios. Também usamos GitHub Actions e CircleCI para automatizar os testes e mensurar a cobertura a cada push.
