@@ -35,7 +35,7 @@ public class SistemaDeApostas{
 
     public void registrarAposta(Apostador apostador, Time time, Partida partida, double valor){
         if(!apostador.saldoSuficiente(valor)) {
-            System.out.println("O apostador não possui saldo suficiente para realizar a aposta!");
+            System.out.println("Saldo insuficiente para realizar a aposta!");
             return;
         }
 
@@ -44,13 +44,9 @@ public class SistemaDeApostas{
         int probabilidade = r.nextInt(101);
         double premio = calcularPremio(probabilidade, valor);
         Aposta aposta = new Aposta(time, jogo, apostador, probabilidade, valor, premio);
+        apostador.adicionarAposta(aposta);
+        jogo.adicionarAposta(aposta);
 
-        if(apostador.saldoSuficiente(valor)) {
-            apostador.adicionarAposta(aposta);
-            jogo.adicionarAposta(aposta);
-        } else{
-            System.out.println("Não foi possivel registrar a aposta! Saldo insuficiente!");
-        }
     }
 
     public int getQuantidadeApostadores(){
