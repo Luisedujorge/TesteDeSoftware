@@ -39,10 +39,9 @@ jobs:
           name: found github actions config
           command: ':'
 workflows:
-  build-test:
+  build-and-test:
     jobs:
-      - build
-    #  - test-java
+      - test-java
     # - deploy:
     #     requires:
     #       - test-java
