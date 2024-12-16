@@ -43,7 +43,6 @@ workflows:
       - test-java
   upload-to-codecov:
     jobs:
-      - checkout 
       - codecov/upload
     # - deploy:
     #     requires:
