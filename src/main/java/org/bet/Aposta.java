@@ -7,7 +7,7 @@ public class Aposta {
     public static final int ABERTA = 1;
     public static final int FECHADA = 2;
 
-    private String time;
+    private Time time;
     private Partida partida;
     private Apostador apostador;
     private double valor;
@@ -20,7 +20,7 @@ public class Aposta {
 
     //public Aposta(){}
 
-    public Aposta(String time, Partida partida, Apostador apostador, int probabilidade, double valor, double premio){
+    public Aposta(Time time, Partida partida, Apostador apostador, int probabilidade, double valor, double premio){
         this.time = time;
         this.partida = partida;
         this.apostador = apostador;
@@ -65,7 +65,7 @@ public class Aposta {
     }
 
     public String getTime() {
-        return this.time;
+        return this.time.toString();
     }
 
     public Apostador getApostador() {

@@ -33,7 +33,7 @@ public class SistemaDeApostas{
         partidas.add(partida);
     }
 
-    public void registrarAposta(Apostador apostador, String time, Partida partida, double valor){
+    public void registrarAposta(Apostador apostador, Time time, Partida partida, double valor){
         if(!apostador.saldoSuficiente(valor)) {
             System.out.println("O apostador não possui saldo suficiente para realizar a aposta!");
             return;
