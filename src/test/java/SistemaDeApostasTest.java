@@ -52,7 +52,6 @@ public class SistemaDeApostasTest {
         assertEquals(expected, test);
     }
 
-
     @Test
     public void testCalularPremio(){
         double valorPremio = sistema.calcularPremio(50, 100);

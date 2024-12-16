@@ -1,8 +1,3 @@
-/**
- * @author Luís Eduardo Jorge Almeida
- * Exemplo de uso estático, apenas para verificar as funcionalidades
- *
- */
 package org.bet;
 
 import java.time.LocalDate;
