@@ -39,6 +39,7 @@ public class SistemaDeApostas{
             return;
         }
 
+        apostador.sacar(valor);
         Partida jogo = buscarPartida(partida.getIdentificador());
         Random r = new Random();
         int probabilidade = r.nextInt(101);
