@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class PartidaTest {
     private Partida partida;
@@ -17,7 +18,7 @@ public class PartidaTest {
         timeA = mock(Time.class);
         timeB = mock(Time.class);
         aposta = mock(Aposta.class);
-        partida = new Partida(timeA, timeB, "futebol", "22/11");
+        partida = new Partida(timeA, timeB);
     }
 
     @Test

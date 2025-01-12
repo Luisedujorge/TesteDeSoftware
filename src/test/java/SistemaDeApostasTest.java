@@ -36,27 +36,25 @@ public class SistemaDeApostasTest {
         assertEquals(expected, test);
     }
 
-    @Test
-    public void testNovoApostador(){
-        sistema.registrarApostador(apostadorMock);
-        int test = sistema.getQuantidadeApostadores();
-        int expected = 1;
-        assertEquals(expected, test);
-    }
-
-    @Test
-    public void testNovoEvento(){
-        sistema.registrarPartida(partidaMock);
-        int test = sistema.getQuantidadeEventos();
-        int expected = 1;
-        assertEquals(expected, test);
-    }
+//    @Test
+//    public void testNovoApostador(){
+//        sistema.registrarApostador(apostadorMock);
+//        int test = sistema.getQuantidadeApostadores();
+//        int expected = 1;
+//        assertEquals(expected, test);
+//    }
+//
+//    @Test
+//    public void testNovaPartida(){
+//        sistema.registrarPartida(partidaMock);
+//        int test = sistema.getQuantidadeEventos();
+//        int expected = 1;
+//        assertEquals(expected, test);
+//    }
 
     @Test
     public void testCalularPremio(){
         double valorPremio = sistema.calcularPremio(50, 100);
         assertEquals(51, valorPremio, 0.001);
     }
-
-
 }

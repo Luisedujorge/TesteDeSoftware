@@ -30,6 +30,7 @@ public class SistemaDeApostas{
     }
 
     public void registrarPartida(Partida partida){
+        partida.calcularOdds();
         partidas.add(partida);
     }
 
@@ -66,26 +67,6 @@ public class SistemaDeApostas{
         }
     }
 
-    public void gerarRelatorioPorApostador(){
-        System.out.println("Relatório de apostas por apostador" + "\n\n");
-        for(Apostador apostador: apostadores){
-            List<Aposta> apostas = apostador.getApostas();
-            System.out.println("Apostador : " + apostador + "\n");
-            for(Aposta aposta: apostas){
-                System.out.println(aposta);
-            }
-        }
-    }
-
-    public void gerarRelatorioPorPartida(){
-        System.out.println("Relatório de apostas por partida" + "\n\n");
-        for(Partida partida: partidas){
-            List<Aposta> p = partida.getApostas();
-            for(Aposta aposta: p){
-                System.out.println(aposta);
-            }
-        }
-    }
 
     public void processarResultado(Partida partida, String timeVencedor){
         for(Aposta aposta : partida.getApostas()) {
@@ -96,5 +77,13 @@ public class SistemaDeApostas{
         }
     }
 
+
+    public List<Apostador> getApostadores(){
+        return this.apostadores;
+    }
+
+    public List<Partida> getPartidas(){
+        return this.partidas;
+    }
 }
 

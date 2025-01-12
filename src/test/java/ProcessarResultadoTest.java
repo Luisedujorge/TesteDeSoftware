@@ -26,7 +26,7 @@ public class ProcessarResultadoTest {
         timeA = new Time("São Paulo", 5);
         timeB = new Time("Cruzeiro", 5);
 
-        partida = new Partida(timeA, timeB, "Futebol", "2024-01-12");
+        partida = new Partida(timeA, timeB);
 
         sistema.registrarApostador(apostador1);
         sistema.registrarApostador(apostador2);

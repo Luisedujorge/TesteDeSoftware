@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Partida {
-    private Time timeA;
-    private Time timeB;
-    private String esporte;
-    private String data;
+    private final Time timeA;
+    private final Time timeB;
+    private double oddTimeA;
+    private double oddTimeB;
+
     private List<Aposta> apostas;
 
-    public Partida(Time timeA, Time timeB, String esporte, String data){
+    public Partida(Time timeA, Time timeB){
         this.timeA = timeA;
         this.timeB = timeB;
-        this.esporte = esporte;
-        this.data = data;
         this.apostas = new ArrayList<>();
     }
 
@@ -33,4 +32,17 @@ public class Partida {
     public String toString(){
         return timeA + " X " + timeB;
     }
+
+    public void calcularOdds(){
+        int qualidadeA = timeA.getQualidade();
+        int qualidadeB = timeB.getQualidade();
+        int qualidadeTotal = qualidadeA + qualidadeB;
+        oddTimeA = (double)qualidadeTotal / (double)qualidadeA;
+        oddTimeB = (double)qualidadeTotal / (double)qualidadeB;
+    }
+
+    public double[] getOdds(){
+        return new double[]{oddTimeA, oddTimeB};
+    }
+
 }

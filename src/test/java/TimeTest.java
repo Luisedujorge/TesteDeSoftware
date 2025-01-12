@@ -6,43 +6,43 @@ import org.junit.Test;
 public class TimeTest {
     private Time time;
 
+    @Before
+    public void setUp(){
+        time = new Time("Cruzeiro", 50);
+    }
+
     @Test
     public void testAumentoDeForca(){
-        Time time = new Time("Cruzeiro", 5);
-        time.aumentarQualidade(3);
-        int expected = 8;
+        time.aumentarQualidade(30);
+        int expected = 80;
         assertEquals(expected, time.getQualidade());
     }
 
     @Test
     public void testReducaoDeForca(){
-        Time time = new Time("Cruzeiro", 5);
-        time.reduzirQualidade(3);
-        int expected = 2;
+        time.reduzirQualidade(30);
+        int expected = 20;
         assertEquals(expected, time.getQualidade());
     }
 
     @Test
     public void testLimiteMinimoDeForca(){
-        Time time = new Time("Cruzeiro", 5);
-        time.reduzirQualidade(7);
+        time.reduzirQualidade(70);
         int expected = 1;
         assertEquals(expected, time.getQualidade());
     }
 
     @Test
     public void testLimiteMaximoDeForca(){
-        Time time = new Time("Cruzeiro", 5);
-        time.aumentarQualidade(7);
-        int expected = 10;
+        time.aumentarQualidade(70);
+        int expected = 100;
         assertEquals(expected, time.getQualidade());
     }
 
     @Test
     public void testOverride(){
-        Time time = new Time("São Paulo", 10);
         String nome = time.toString();
-        String expected = "São Paulo";
+        String expected = "Cruzeiro";
         assertEquals(expected, nome);
     }
 }
