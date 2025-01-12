@@ -89,7 +89,7 @@ public class SistemaDeApostas{
 
     public void processarResultado(Partida partida, String timeVencedor){
         for(Aposta aposta : partida.getApostas()) {
-            if(aposta.getTime() == timeVencedor) {
+            if(aposta.getTime().equals(timeVencedor)) {
                 aposta.getApostador().depositar(aposta.getPremio());
                 System.out.println("R$" + aposta.getPremio() + " foram transferidos para o/a " + aposta.getApostador() + "!");
             }

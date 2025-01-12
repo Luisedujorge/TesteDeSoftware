@@ -21,7 +21,7 @@ public class CancelarApostaTest {
     @Before
     public void setUp() {
         sistema = new SistemaDeApostas();
-        apostador = new Apostador("Luis", LocalDate.of(2002, 01, 21),1000);
+        apostador = new Apostador("Luis", LocalDate.of(2002, 1, 21),1000);
         timeA = new Time("São Paulo", 5);
         timeB = new Time("Cruzeiro", 5);
         partida = new Partida(timeA, timeB, "Futebol", "2024-01-12");
