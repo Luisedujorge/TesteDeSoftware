@@ -56,4 +56,44 @@ public class SistemaDeApostas{
     public int getQuantidadeEventos(){
         return partidas.size();
     }
+
+    public void cancelarAposta(Apostador apostador, Aposta aposta){
+        if(apostador.getApostas().contains(aposta)) {
+            apostador.removerAposta(aposta);
+            aposta.getPartida().getApostas().remove(aposta);
+
+            apostador.depositar(aposta.getValor());
+        }
+    }
+
+    public void gerarRelatorioPorApostador(){
+        System.out.println("Relatório de apostas por apostador" + "\n\n");
+        for(Apostador apostador: apostadores){
+            List<Aposta> apostas = apostador.getApostas();
+            System.out.println("Apostador : " + apostador + "\n");
+            for(Aposta aposta: apostas){
+                System.out.println(aposta);
+            }
+        }
+    }
+
+    public void gerarRelatorioPorPartida(){
+        System.out.println("Relatório de apostas por partida" + "\n\n");
+        for(Partida partida: partidas){
+            List<Aposta> p = partida.getApostas();
+            for(Aposta aposta: p){
+                System.out.println(aposta);
+            }
+        }
+    }
+
+    public void processarResultado(Partida partida, String timeVencedor){
+        for(Aposta aposta : partida.getApostas()) {
+            if(aposta.getTime() == timeVencedor) {
+                aposta.getApostador().depositar(aposta.getPremio());
+                System.out.println("R$" + aposta.getPremio() + " foram transferidos para o/a " + aposta.getApostador() + "!");
+            }
+        }
+    }
+
 }

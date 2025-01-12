@@ -87,4 +87,5 @@ public class Apostador{
     public void mudarDataNascimento(LocalDate novaDataNascimento) {
         this.dataNascimento = novaDataNascimento;
     }
+
 }
