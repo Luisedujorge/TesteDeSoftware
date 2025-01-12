@@ -23,7 +23,7 @@ public class RegistrarApostaTest {
         timeA = new Time("São Paulo", 5);
         timeB = new Time("Cruzeiro", 5);
 
-        partida = new Partida(timeA, timeB, "Basquete", "2024-01-12");
+        partida = new Partida(timeA, timeB);
 
         sistema.registrarApostador(apostador);
         sistema.registrarPartida(partida);
