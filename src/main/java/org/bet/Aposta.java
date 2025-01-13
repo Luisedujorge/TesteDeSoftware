@@ -54,13 +54,12 @@ public class Aposta {
         return this.probabilidade;
     }
 
-    public String toString(){
-        return "Partida: " + partida + "\n"
-                + "Time: " + time + "\n"
-                + "Probabilidade: " + probabilidade + "\n"
-                + "Valor apostado: " + valor + "\n"
-                + "Premio: " + premio + "\n";
+
+    public String toString() {
+        return String.format("Partida: %s\nTime: %s\nOdd: %.2f\nValor apostado: %.2f\nPremio: %.2f\n",
+                partida, time, probabilidade, valor, premio);
     }
+
 
     public String getTime() {
         return this.time.toString();

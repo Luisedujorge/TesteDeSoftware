@@ -48,7 +48,7 @@ public class Main{
                 sistema.registrarPartida(partida);
             }
             else if(option == 3){
-                System.out.println("Insira os dados da aposta");
+                System.out.println("Insira os dados da aposta: partida, time, apostador e valor da aposta");
                 String jogo = scanner.nextLine();
                 Partida partida = sistema.buscarPartida(jogo);
 
