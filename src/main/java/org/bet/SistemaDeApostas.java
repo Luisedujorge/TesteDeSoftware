@@ -36,8 +36,8 @@ public class SistemaDeApostas{
     }
 
 
-    public double calcularPremio(int probabilidade, double valor){
-        return (101 - (double)probabilidade) * valor / 100 ;
+    public double calcularPremio(double odds, double valor){
+        return (valor * odds);
     }
 
     public void registrarPartida(Partida partida){
@@ -53,10 +53,16 @@ public class SistemaDeApostas{
 
         apostador.sacar(valor);
         Partida jogo = buscarPartida(partida.getIdentificador());
-        Random r = new Random();
-        int probabilidade = r.nextInt(101);
-        double premio = calcularPremio(probabilidade, valor);
-        Aposta aposta = new Aposta(time, jogo, apostador, probabilidade, valor, premio);
+
+        double oddSelecionada;
+        if(time.equals(jogo.getTimeA())) {
+            oddSelecionada = jogo.getOdds()[0]; // odd do time A
+        } else {
+            oddSelecionada = jogo.getOdds()[1]; // odd do time B
+        }
+
+        double premio = calcularPremio(oddSelecionada, valor);
+        Aposta aposta = new Aposta(time, jogo, apostador, oddSelecionada, valor, premio);
         apostador.adicionarAposta(aposta);
         jogo.adicionarAposta(aposta);
 

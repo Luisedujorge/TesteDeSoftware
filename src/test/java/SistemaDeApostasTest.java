@@ -54,7 +54,7 @@ public class SistemaDeApostasTest {
 
     @Test
     public void testCalularPremio(){
-        double valorPremio = sistema.calcularPremio(50, 100);
-        assertEquals(51, valorPremio, 0.001);
+        double valorPremio = sistema.calcularPremio(1.5, 100);
+        assertEquals(150, valorPremio, 0.001);
     }
 }

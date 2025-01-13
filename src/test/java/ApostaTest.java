@@ -25,28 +25,28 @@ public class ApostaTest {
     public void testAumentaProbabilidade(){
         aposta = new Aposta(time, partida, apostador, 60, 300, 500);
         aposta.aumentarProbabilidade(10);
-        assertEquals(aposta.getProbabilidade(), 70);
+        assertEquals(aposta.getProbabilidade(), 70, 0.001);
     }
 
     @Test
     public void testDiminuiProbabilidade(){
         aposta = new Aposta(time, partida, apostador, 60, 300, 500);
         aposta.diminuirProbabilidade(10);
-        assertEquals(aposta.getProbabilidade(), 50);
+        assertEquals(aposta.getProbabilidade(), 50, 0.001);
     }
 
     @Test
     public void testLimiteMaximoProbabilidade(){
         aposta = new Aposta(time, partida, apostador, 60, 300, 500);
         aposta.aumentarProbabilidade(50);
-        assertEquals(aposta.getProbabilidade(), 100);
+        assertEquals(aposta.getProbabilidade(), 100, 0.001);
     }
 
     @Test
     public void testLimiteMinixmoProbabilidade(){
         aposta = new Aposta(time, partida, apostador, 30, 300, 500);
         aposta.diminuirProbabilidade(40);
-        assertEquals(aposta.getProbabilidade(), 0);
+        assertEquals(aposta.getProbabilidade(), 0, 0.001);
     }
 
     @Test(expected = IllegalArgumentException.class)

@@ -16,9 +16,9 @@ public class Aposta {
     protected int status = ABERTA;
 
 
-    protected int probabilidade = 0;
+    protected double probabilidade = 0;
 
-    public Aposta(Time time, Partida partida, Apostador apostador, int probabilidade, double valor, double premio){
+    public Aposta(Time time, Partida partida, Apostador apostador, double probabilidade, double valor, double premio){
         this.time = time;
         this.partida = partida;
         this.apostador = apostador;
@@ -50,7 +50,7 @@ public class Aposta {
     }
 
 
-    public int getProbabilidade() {
+    public double getProbabilidade() {
         return this.probabilidade;
     }
 

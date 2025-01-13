@@ -45,11 +45,11 @@ public class Partida {
         return new double[]{oddTimeA, oddTimeB};
     }
 
-    public Time getTimeA(){
+    public Time getTimeA() {
         return timeA;
     }
 
-    public Time getTimeB(){
+    public Time getTimeB() {
         return timeB;
     }
 }
