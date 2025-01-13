@@ -1,26 +1,69 @@
 package org.bet;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args){
+        System.out.println("Sistema de apostas");
+        int option = 1;
         SistemaDeApostas sistema = new SistemaDeApostas();
+        Scanner scanner = new Scanner(System.in);
 
-        Apostador luis = new Apostador("Luis", LocalDate.of(2000, 12, 15), 1000);
-        Apostador eduardo = new Apostador("Eduardo", LocalDate.of(2000, 12, 15), 1000);
-        sistema.registrarApostador(luis);
-        sistema.registrarApostador(eduardo);
+        while(option != 0){
+            System.out.println("Escolha uma opção: \n");
+            System.out.println("1 - Registar Apostador");
+            System.out.println("2 - Registar Partida");
+            System.out.println("3 - Registar Aposta");
+            System.out.println("0 - Sair");
 
-        Time a = new Time("Sao Paulo", 10);
-        Time b = new Time("Cruzeiro", 10);
-        Time c = new Time("Fortaleza", 10);
-        Time d = new Time("Bahia", 10);
+            option = scanner.nextInt();
+            scanner.nextLine();
 
+            if(option == 1){
+                System.out.println("Digite o nome, a data de nascimento e o saldo inicial do Apostador");
+                String nome = scanner.nextLine();
+                String data = scanner.nextLine();
+                int saldo = scanner.nextInt();
+                scanner.nextLine();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate date = LocalDate.parse(data, formatter);
+                Apostador apostador = new Apostador(nome, date, saldo);
+                sistema.registrarApostador(apostador);
+            }
+            else if(option == 2){
+                System.out.println("Digite os nomes dos 2 times");
+                String timeA = scanner.nextLine();
+                Random r = new Random();
+                Time timeAObj = new Time(timeA, r.nextInt(100));
 
-        Partida partida1 = new Partida(a, b);
-        Partida partida2 = new Partida(c, d);
-        sistema.registrarPartida(partida1);
-        sistema.registrarPartida(partida2);
+                String timeB = scanner.nextLine();
+                Time timeBObj = new Time(timeB, r.nextInt(100));
+
+                Partida partida = new Partida(timeAObj, timeBObj);
+                sistema.registrarPartida(partida);
+            }
+            else if(option == 3){
+                System.out.println("Insira os dados da aposta");
+                String jogo = scanner.nextLine();
+                Partida partida = sistema.buscarPartida(jogo);
+
+                String timeApostado = scanner.nextLine();
+                Time time = (timeApostado.equals(partida.getTimeA().toString()) ? partida.getTimeA() : partida.getTimeB());
+
+                String apostadorDaVez = scanner.nextLine();
+                Apostador apostador = sistema.buscarApostador(apostadorDaVez);
+
+                sistema.registrarAposta(apostador, time, partida, 50);
+            }
+            else if(option < 0 || option > 3){
+                System.out.println("Digite uma opção válida");
+            }
+        }
+
+        scanner.close();
 
     }
 }

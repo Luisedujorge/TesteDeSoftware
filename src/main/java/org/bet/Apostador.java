@@ -91,5 +91,9 @@ public class Apostador{
     public boolean maiorIdade(){
         return this.getIdade() >= 18;
     }
+
+    public String getNome(){
+        return nome;
+    }
 }
 

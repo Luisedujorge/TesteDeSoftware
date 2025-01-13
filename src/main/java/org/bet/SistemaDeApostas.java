@@ -28,6 +28,13 @@ public class SistemaDeApostas{
                 .orElse(null);
     }
 
+    public Apostador buscarApostador(String nome){
+        return apostadores.stream()
+                .filter(apostador -> apostador.getNome().equalsIgnoreCase(nome))
+                .findFirst()
+                .orElse(null);
+    }
+
 
     public double calcularPremio(int probabilidade, double valor){
         return (101 - (double)probabilidade) * valor / 100 ;
