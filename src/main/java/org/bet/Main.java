@@ -17,6 +17,8 @@ public class Main{
             System.out.println("1 - Registar Apostador");
             System.out.println("2 - Registar Partida");
             System.out.println("3 - Registar Aposta");
+            System.out.println("4 - Ver apostas de cada apostador");
+            System.out.println("5 - Ver apostas de cada partida");
             System.out.println("0 - Sair");
 
             option = scanner.nextInt();
@@ -56,7 +58,30 @@ public class Main{
                 String apostadorDaVez = scanner.nextLine();
                 Apostador apostador = sistema.buscarApostador(apostadorDaVez);
 
-                sistema.registrarAposta(apostador, time, partida, 50);
+                int valor = scanner.nextInt();
+                scanner.skip("\n");
+
+                sistema.registrarAposta(apostador, time, partida, valor);
+            } else if(option == 4){
+                for(Apostador apostador : sistema.getApostadores()){
+                    System.out.println("Apostas de " + apostador.getNome());
+                    for(Aposta aposta : apostador.getApostas()){
+                        System.out.println(aposta.toString());
+                        System.out.println();
+                    }
+                    System.out.println();
+                    System.out.println();
+                }
+            } else if(option == 5) {
+                for (Partida partida : sistema.getPartidas()) {
+                    System.out.println("Apostas da partida " + partida);
+                    for(Aposta aposta : partida.getApostas()){
+                        System.out.println(aposta.toString());
+                        System.out.println();
+                    }
+                    System.out.println();
+                    System.out.println();
+                }
             }
             else if(option < 0 || option > 3){
                 System.out.println("Digite uma opção válida");
