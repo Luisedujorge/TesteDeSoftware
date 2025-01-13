@@ -18,19 +18,19 @@ public class RegistrarApostaTest {
     @Before
     public void setUp() {
         sistema = new SistemaDeApostas();
-        apostador = new Apostador("Luis", LocalDate.of(2002, 1, 1), 100);
 
         timeA = new Time("São Paulo", 5);
         timeB = new Time("Cruzeiro", 5);
 
         partida = new Partida(timeA, timeB);
 
-        sistema.registrarApostador(apostador);
         sistema.registrarPartida(partida);
     }
 
     @Test
     public void testRegistrarApostaComSaldoSuficiente() {
+        apostador = new Apostador("Luis", LocalDate.of(2002, 1, 1), 100);
+        sistema.registrarApostador(apostador);
         double saldoInicial = apostador.getSaldo();
 
         sistema.registrarAposta(apostador, timeA, partida, 100);
@@ -42,6 +42,8 @@ public class RegistrarApostaTest {
 
     @Test
     public void testRegistrarApostaSaldoInsuficiente() {
+        apostador = new Apostador("Luis", LocalDate.of(2002, 1, 1), 100);
+        sistema.registrarApostador(apostador);
         double saldoInicial = apostador.getSaldo();
 
         sistema.registrarAposta(apostador, timeA, partida, 101);
@@ -50,4 +52,18 @@ public class RegistrarApostaTest {
         assertEquals(saldoInicial, apostador.getSaldo(), 0.001);
         assertEquals(0, partida.getApostas().size());
     }
+
+    public void testRegistrarApostaMenorDeIdade(){
+        apostador = new Apostador("Luis", LocalDate.of(2010, 1, 1), 1000);
+        sistema.registrarApostador(apostador);
+        double saldoInicial = apostador.getSaldo();
+
+        sistema.registrarAposta(apostador, timeA, partida, 100);
+
+        assertEquals(0, apostador.getApostas().size());
+        assertEquals(saldoInicial, apostador.getSaldo(), 0.001);
+        assertEquals(0, partida.getApostas().size());
+    }
+
+
 }

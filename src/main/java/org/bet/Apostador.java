@@ -88,5 +88,8 @@ public class Apostador{
         this.dataNascimento = novaDataNascimento;
     }
 
+    public boolean maiorIdade(){
+        return this.getIdade() >= 18;
+    }
 }
 

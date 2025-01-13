@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Main{
     public static void main(String[] args){
-        /*SistemaDeApostas sistema = new SistemaDeApostas();
+        SistemaDeApostas sistema = new SistemaDeApostas();
 
         Apostador luis = new Apostador("Luis", LocalDate.of(2000, 12, 15), 1000);
         Apostador eduardo = new Apostador("Eduardo", LocalDate.of(2000, 12, 15), 1000);
@@ -17,17 +17,10 @@ public class Main{
         Time d = new Time("Bahia", 10);
 
 
-        Partida partida1 = new Partida(a, b, "futebol", "21/11/24");
-        Partida partida2 = new Partida(c, d, "futebol", "22/11/24");
+        Partida partida1 = new Partida(a, b);
+        Partida partida2 = new Partida(c, d);
         sistema.registrarPartida(partida1);
         sistema.registrarPartida(partida2);
 
-        sistema.registrarAposta(luis, "Sao Paulo", partida1, 50);
-        sistema.registrarAposta(eduardo, "Bahia", partida2, 70);
-        sistema.registrarAposta(luis, "Bahia", partida2, 20);
-        sistema.registrarAposta(eduardo, "Cruzeiro", partida1, 70);
-
-        sistema.gerarRelatorioPorApostador();
-        sistema.gerarRelatorioPorPartida();*/
     }
 }

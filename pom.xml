@@ -50,6 +50,11 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <excludes>
+                        <exclude>org/bet/Main*</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
