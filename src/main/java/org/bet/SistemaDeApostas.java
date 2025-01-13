@@ -14,6 +14,10 @@ public class SistemaDeApostas{
     }
 
     public void registrarApostador(Apostador apostador){
+        if(!apostador.maiorIdade()){
+            System.out.println("O apostador deve ter 18 anos ou mais!");
+            return;
+        }
         apostadores.add(apostador);
     }
 
@@ -35,10 +39,6 @@ public class SistemaDeApostas{
     }
 
     public void registrarAposta(Apostador apostador, Time time, Partida partida, double valor){
-        if(!apostador.maiorIdade()){
-            System.out.println("O apostador deve ter 18 anos ou mais!");
-            return;
-        }
         if(!apostador.saldoSuficiente(valor)) {
             System.out.println("Saldo insuficiente para realizar a aposta!");
             return;

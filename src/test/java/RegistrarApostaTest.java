@@ -53,17 +53,5 @@ public class RegistrarApostaTest {
         assertEquals(0, partida.getApostas().size());
     }
 
-    public void testRegistrarApostaMenorDeIdade(){
-        apostador = new Apostador("Luis", LocalDate.of(2010, 1, 1), 1000);
-        sistema.registrarApostador(apostador);
-        double saldoInicial = apostador.getSaldo();
-
-        sistema.registrarAposta(apostador, timeA, partida, 100);
-
-        assertEquals(0, apostador.getApostas().size());
-        assertEquals(saldoInicial, apostador.getSaldo(), 0.001);
-        assertEquals(0, partida.getApostas().size());
-    }
-
 
 }
